@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="logo.png">
+    <title>Spotify-web player:Music for everyone</title>
+    <link rel="stylesheet" href="majorp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+body{
+    font-family:'Montserrat',sans-serif;
+    margin:0;
+    background-color: black;
+    color:white;
+    overflow:hidden;
+}
+.main{
+    padding:0.5rem;
+    display:flex;
+    height:100vh; 
+}
+.sidebar{
+    background-color: black;
+    width:340px;
+    border-radius:1rem; 
+    margin-right: 0.5rem;
+    height: 100%;
+}
+.main-content{
+    background-color: #121212;
+    flex:1;
+    border-radius:1rem;
+    overflow:auto;
+    padding: 0 1.5rem 0 1.5rem  ;
+}
+.music-player{
+    background-color: black;
+    position: fixed;
+    bottom:0;
+    width:100%;
+    height:72px;
+}
+a{
+    text-decoration:none;
+    color:white;
+}
+.nav{
+    background-color:#121212 ;
+    border-radius:1rem;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    height:100px;
+    padding:0.5rem 0.75rem;
+
+}
+.nav-option{
+    line-height: 2rem;
+    opacity: 0.7;
+    padding: 0.5rem 0.75rem;
+}
+.nav-option:hover{
+    opacity: 1;
+}
+.nav-option i{
+       font-size:1.25rem;
+
+}
+.nav-option a{
+    font-size:1rem;
+    margin-left:1rem;
+}
+.library{
+       background-color: #121212;
+       border-radius:1rem;
+       height: 90%;
+       margin-top:0.5rem;
+       padding: 0.5rem 0.75rem;
+}
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    
+}
+.lib-option img{
+    height: 1.25rem;
+    width:1.25rem;
+}
+.icons{
+    font-size: 1.25rem;
+    display: flex;
+   
+}
+.icons i{
+    opacity:0.7;
+    margin-right: 1rem;
+}
+.icons i:hover{
+    opacity:1;
+}
+.box{
+    background-color: #232323;
+    height:8rem;
+    border-radius: 0.75rem;
+    margin:0.75rem 0 1.75rem 0;
+    padding:0.75rem 1.25rem;
+}
+.box-p1{
+    font-size: 1rem;
+    font-weight: 500;
+}
+.box-p2{
+    font-size: 0.85rem;
+    opacity:0.9;
+    
+}
+.badge{
+    background-color: #fff;
+    border:none;
+    border-radius: 100px;
+    padding: 0.25rem 1rem;
+    font-weight: 700;
+    margin-top:0.5rem;
+    height: 2rem;
+    width: fit-content;
+    
+}
+.dark-badge{
+    background-color:#000;
+    color: #fff;
+}
+.sticky-nav{
+    position:sticky;
+    top: 0;
+    background-color: #121212;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:1rem 0 1rem 0;
+    z-index:10;
+}
+.sticky-nav-icons{
+        margin-left: 0.75rem ;
+}
+.sticky-nav-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.nav-item{
+    margin-right: 1rem;
+
+}
+@media(max-width:1000px){
+    .hide{
+        display: none;
+    }
+}
+.card{
+    background-color: #232323;
+    width:150px;
+    border-radius: 0.5rem;
+    padding:1rem;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+.card-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-img{
+     width:100%;
+     border-radius: 0.5rem;
+}
+.card-title{
+    font-weight: 600;
+}
+.card-info{
+    font-size:0.85rem ;
+    opacity: 0.7;
+}
+.featured{
+    display: flex;
+    flex-wrap: wrap;
+}
+.footer{
+    height:300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.line{
+    width:90%;
+    height:50%;
+    border-top:1px solid white;
+    opacity: 0.7;
+}
+.music-player{
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+}
+.album{
+    width:25%
+}
+.player{
+    width:50%;
+    /* background-color: rgb(255, 153, 0); */
+}
+.controls{
+      width:25%;
+}
+.player-controls{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+}
+.p-icon{
+    height: 1rem;
+    margin-right: 1.75rem;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+}
+.p-icon:hover{
+    opacity: 1;
+}
+.playback-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progress-bar{
+    width: 70%;
+    appearance: none;
+    background-color: transparent;
+    cursor:pointer;
+}
+.progress-bar::-webkit-slider-runnable-track{
+    background-color: #DDD;
+    border-radius: 100px;
+    height: 0.2rem;
+}
+.progress-bar::-webkit-slider-thumb{
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    background-color: #1bd760;
+    border-radius:50% ;
+    margin-top:-6px ;
+}
+
+</style>
+</head>
+<body>
+    <div class="main">
+        <div class="sidebar">
+            <div class="nav">
+                <div class="nav-option" style="opacity:1;">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="#">Home</a>
+                </div>
+                <div class="nav-option">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="#">Search</a>
+                </div>
+            </div>
+            <div class="library">
+                <div class="options ">
+                    <div class="lib-option nav-option">
+                        <img src="library_icon.png">
+                        <a href="#">Your library</a>    
+                    </div>
+                    <div class="icons">
+                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="lib-boxes">
+                    <div class="box">
+                        <p class="box-p1">Create your first playlist</p>
+                        <p class="box-p2">It's easy we will help you</p>
+                        <button class="badge"> Create playlist</button>
+                    </div>
+                    <div class="box">
+                        <p class="box-p1">Let's find some prodcast to follow</p>
+                        <p class="box-p2">We'll keep you updated on new episods</p>
+                        <button class="badge">Browse prodcast</button>
+                    </div>
+              </div>
+            </div>
+        </div> 
+        <div class="main-content">
+            <div class="sticky-nav">
+                <div class="sticky-nav icons">
+                <img src="backward_icon.png">
+                <img src="forward_icon.png"class="hide">
+            </div>
+            <div class="sticky-nav-optons">
+                <button class="badge nav-item hide">Explore Premium</button>
+                <button class="badge nav-item dark-badge"><i class="fa-regular fa-circle-down" style="margin-right: 5px;"></i>Install App</button>
+                <i class="fa-regular fa-user"></i>
+            </div>
+            </div>
+                
+                 <h2>Recently played</h2>
+                <div class="cards-container">
+                    <div class="card">
+                        <img src="card1img.jpeg.jpg" class="card-img">
+                        <p class="card-title">Top 50-Global</p>
+                        <p class="card-info"> Your daily updates of the most played tracks...</p>
+                </div>
+            </div>
+            
+              <h2>Trending now near you </h2>
+              <div class="card-flex">
+                <div class="card-containers">
+                    <div class="card">
+                        <img src="card2img.jpeg.jpg" class="card-img">
+                        <p class="card-title">Top 50-Global</p>
+                        <p class="card-info"> Your daily updates of the most played tracks...</p>
+                </div>
+            </div>
+                <div class="card-containers">
+                <div class="card">
+                    <img src="card3img.jpeg.jpg" class="card-img">
+                    <p class="card-title">Top 50-Global</p>
+                    <p class="card-info"> Your daily updates of the most played tracks...</p>
+            </div>
+        </div>
+             <div class="card-containers">
+             <div class="card">
+                <img src="card4img.jpeg.jpg" class="card-img">
+                <p class="card-title">Top 50-Global</p>
+                <p class="card-info"> Your daily updates of the most played tracks...</p>
+             </div>
+             </div>
+             <div class="card-containers">
+                <div class="card">
+                   <img src="card4img.jpeg.jpg" class="card-img">
+                   <p class="card-title">Top 50-Global</p>
+                   <p class="card-info"> Your daily updates of the most played tracks...</p>
+                </div>
+                </div>
+                <div class="card-containers">
+                    <div class="card">
+                       <img src="card4img.jpeg.jpg" class="card-img">
+                       <p class="card-title">Top 50-Global</p>
+                       <p class="card-info"> Your daily updates of the most played tracks...</p>
+                    </div>
+                    </div>
+              </div>
+              <h2>Featured charts</h2>
+              <div class="featured">
+                    
+                    <div class="cards-container">
+                        <div class="card">
+                            <img src="card6img.jpeg.jpg" class="card-img">
+                            <p class="card-title">Top songs India</p>
+                            <p class="card-info"> Your daily updates of the most played tracks...</p>
+                    </div>
+                </div>
+                <div class="cards-container">
+                    <div class="card">
+                        <img src="card6img.jpeg.jpg" class="card-img">
+                        <p class="card-title">Top songs India</p>
+                        <p class="card-info"> Your daily updates of the most played tracks...</p>
+                </div>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <img src="card1img.jpeg.jpg" class="card-img">
+                    <p class="card-title">Top 50-Global</p>
+                    <p class="card-info"> Your daily updates of the most played tracks...</p>
+            </div>
+        </div>
+    </div>
+<div class="footer">
+    <div class="line"></div>
+</div>
+        </div>
+        <div class="music-player">
+            <div class="album"></div>
+            <div class="player">
+                <div class="player-controls">
+                   <img   src="player_icon1.png" class="p-icon">
+                   <img   src="player_icon2.png" class="p-icon">
+                   <img   src="player_icon3.png" class="p-icon" style="opacity: 1;height:2rem">
+                   <img   src="player_icon4.png" class="p-icon">
+                   <img   src="player_icon5.png" class="p-icon">
+                   
+                </div>
+                <div class="playback-bar">
+                    <span class="curr-time">00.00</span>
+                    <input type="range" min="0" max="100" class="progress-bar"step="1">
+                    <span class="tot-time">33.33</span>
+                </div>
+            </div>
+            <div class="controls">
+            <i class="fa-solid fa-play"></i>
+            </div>
+        
+        </div>
+    </div>
+
+ 
+ 
+</body>
+</html>
